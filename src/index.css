@@ -21,7 +21,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
 
+.dark:root {
+  background-color: rgb(15 23 42);
+}
+
+* {
   box-sizing: border-box;
 }
 

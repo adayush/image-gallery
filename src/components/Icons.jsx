@@ -34,7 +34,7 @@ function SearchIcon(props) {
         d="M14.2008 7.5C14.2008 11.2302 11.1874 14.25 7.47539 14.25C3.76338 14.25 0.75 11.2302 0.75 7.5C0.75 3.76975 3.76338 0.75 7.47539 0.75C11.1874 0.75 14.2008 3.76975 14.2008 7.5Z"
         stroke="#4F4F4F"
         strokeWidth="1.5"
-        className="icon fill-none"
+        className="icon fill-none dark:fill-none"
       />
     </svg>
   );
@@ -95,4 +95,29 @@ function CrossIcon(props) {
   );
 }
 
-export { Logo, SearchIcon, MenuIcon, CrossIcon };
+function LikeIcon() {
+  return (
+    <svg
+      viewBox="0 0 8 8"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2.73218 5.57132L3.67025 6.29757C3.79129 6.41861 4.06364 6.47913 4.2452 6.47913H5.39509C5.75822 6.47913 6.1516 6.20679 6.24239 5.84366L6.96864 3.63465C7.11994 3.21101 6.84759 2.84788 6.39369 2.84788H5.18327C5.00171 2.84788 4.85041 2.69658 4.88067 2.48476L5.03197 1.51642C5.09249 1.24408 4.91093 0.941477 4.63858 0.850696C4.3965 0.759914 4.0939 0.880956 3.97285 1.06252L2.73218 2.9084"
+        stroke="#4F4F4F"
+        strokeWidth="0.51875"
+        strokeMiterlimit="10"
+        className="icon fill-none"
+      />
+      <path
+        d="M1.1889 5.57196V2.60644C1.1889 2.1828 1.37047 2.03149 1.79411 2.03149H2.09672C2.52036 2.03149 2.70192 2.1828 2.70192 2.60644V5.57196C2.70192 5.99561 2.52036 6.14691 2.09672 6.14691H1.79411C1.37047 6.14691 1.1889 5.99561 1.1889 5.57196Z"
+        stroke="#4F4F4F"
+        strokeWidth="0.51875"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="icon fill-none"
+      />
+    </svg>
+  );
+}
+
+export { Logo, SearchIcon, MenuIcon, CrossIcon, LikeIcon };

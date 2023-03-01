@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .icon {
+    @apply fill-gray-600 dark:fill-gray-200 stroke-gray-600 dark:stroke-gray-200;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

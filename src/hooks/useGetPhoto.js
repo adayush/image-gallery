@@ -3,7 +3,10 @@ function useGetPhoto(imageId, setImageData) {
 
   fetch(`http://api.unsplash.com/photos/${imageId}?client_id=${import.meta.env.VITE_CLIENT_ID}`, {
     method: 'GET',
-    mode: 'cors'
+    mode: 'cors',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+    },
   })
     .then(response => response.json())
     .then(data => setImageData(data))

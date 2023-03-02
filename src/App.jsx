@@ -65,7 +65,7 @@ function App() {
       <div>
         <Header handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
         <Cover handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
-        <Gallery imageData={imageData} />
+        <Gallery imageData={imageData} handleSearch={handleSearch} />
       </div>
     </div>
   );

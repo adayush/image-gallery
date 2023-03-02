@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import Card from "./Card";
 import Popup from "./Popup";
 
-function Gallery({ imageData }) {
+function Gallery({ imageData, handleSearch }) {
   // const [showPopup, setShowPopup] = useState(false);
   const [popupImageId, setPopupImageId] = useState();
 
@@ -54,7 +54,7 @@ function Gallery({ imageData }) {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {popupImageId && <Popup imageId={popupImageId} closePopup={closePopup} />}
+      {popupImageId && <Popup imageId={popupImageId} closePopup={closePopup} handleSearch={handleSearch} />}
     </main>
   );
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useGetPhoto from "../hooks/useGetPhoto";
 import { CrossIcon, LikeIcon } from "./Icons";
 
-function Popup({ imageId, closePopup }) {
+function Popup({ imageId, closePopup, handleSearch }) {
   const [imageData, setImageData] = useState();
 
   useEffect(() => {
@@ -80,10 +80,10 @@ function Popup({ imageId, closePopup }) {
             <p className="text-sm font-semibold">Related Tags</p>
             <div className="flex mt-2 gap-2 flex-wrap">
               {imageData.tags.map((tag, i) => (
-                <div key={i} className="px-2 py-1 text-sm rounded-sm bg-gray-200 inline-block">
+                <button onClick={() => handleSearch(tag.title)} key={i} className="px-2 py-1 text-sm rounded-sm bg-gray-200 inline-block">
                   {tag.title.charAt(0).toUpperCase()}
                   {tag.title.slice(1)}
-                </div>
+                </button>
               ))}
             </div>
           </div>

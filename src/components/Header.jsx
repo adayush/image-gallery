@@ -67,7 +67,7 @@ function Header({ handleSubmit, search, handleSearch }) {
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [dark])
+  }, [dark]);
 
   return (
     <header className="py-6 px-7 dark:bg-black md:max-w-6xl m-auto">
@@ -87,20 +87,26 @@ function Header({ handleSubmit, search, handleSearch }) {
           <p>Collections</p>
           <p>Community</p>
         </div>
-        <div className="flex gap-2 md:hidden">
-          <button className="m-auto">
+        <div className="flex gap-5">
+          <button className="m-auto md:hidden">
             <SearchIcon class="stroke-black dark:stroke-white" />
           </button>
-          <button className="m-auto">
+          <button className="m-auto md:hidden">
             <MenuIcon class="stroke-black dark:stroke-white" />
           </button>
-        </div>
-        <div className="hidden md:flex md:flex-col">
-          <p className="text-xs pb-1 whitespace-nowrap dark:text-white">{dark ? "Light" : "Dark"} Mode</p>
-          <label class="switch">
-            <input type="checkbox" onChange={() => setDark(!dark)} id="checkBox" />
-            <span class="slider"></span>
-          </label>
+          <div className="flex flex-col justify-center">
+            <p className="text-xs font-medium pb-1 hidden md:block md:whitespace-nowrap dark:text-white">
+              {dark ? "Light" : "Dark"} Mode
+            </p>
+            <label class="switch">
+              <input
+                type="checkbox"
+                onChange={() => setDark(!dark)}
+                id="checkBox"
+              />
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
       </nav>
     </header>

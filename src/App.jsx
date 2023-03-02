@@ -61,7 +61,7 @@ function App() {
   }
 
   function tagSearch(tag) {
-    setSearch(tag);
+    handleSearch(tag);
     listPhotos("search", tag);
   }
 

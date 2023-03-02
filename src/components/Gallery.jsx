@@ -43,13 +43,9 @@ function Gallery({ imageData, tagSearch }) {
             console.log()
             return (
               <Card
+                image={image}
                 key={image.id}
-                name={image.user.name}
-                username={image.user.username}
-                profileImage={image.user.profile_image.small}
-                likes={image.likes}
-                url={window.innerWidth >= 768 ? image.urls.small : image.urls.thumb}
-                onClick={() => showPopup(image.id)}
+                showPopup={showPopup}
               />
             );
           })}

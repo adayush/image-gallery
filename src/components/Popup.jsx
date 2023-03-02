@@ -14,13 +14,18 @@ function Popup({ imageId, closePopup, tagSearch }) {
       <div
         onClick={closePopup}
         className="fixed z-50 w-full h-full top-0 left-0 backdrop-brightness-50"
-      >
-      </div>
+      ></div>
     );
   }
 
   return (
-    <div className="fixed flex z-50 w-full h-full top-0 left-0 backdrop-brightness-50 overflow-y-scroll">
+    <div
+      onClick={(e) => {
+        if (e.target.id === "popup-container") closePopup()
+      }}
+      id="popup-container"
+      className="fixed flex z-50 w-full h-full top-0 left-0 backdrop-brightness-50 overflow-y-scroll"
+    >
       <div className="m-auto py-5 w-[85%] md:max-w-2xl">
         <div className="relative">
           {/* Image box */}
@@ -51,7 +56,10 @@ function Popup({ imageId, closePopup, tagSearch }) {
         <div className="flex flex-col gap-4 p-2 bg-white rounded-b-md">
           {/* description box */}
           <div className="flex p-2 justify-between">
-            <a href={`https://unsplash.com/@${imageData.user.username}`} target="_blank">
+            <a
+              href={`https://unsplash.com/@${imageData.user.username}`}
+              target="_blank"
+            >
               <div className="flex gap-1 md:gap-2 align-middle">
                 {/* userpicture, name, username */}
                 <div className="m-auto overflow-hidden">
@@ -80,7 +88,7 @@ function Popup({ imageId, closePopup, tagSearch }) {
           <div className="px-2">
             {/* Related Tags */}
             <p className="text-sm font-semibold">Related Tags</p>
-            <div className="flex mt-2 gap-2 flex-wrap">
+            <div className="flex mt-2 mb-4 gap-2 flex-wrap">
               {imageData.tags.map((tag, i) => (
                 <button
                   onClick={() => {

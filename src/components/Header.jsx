@@ -68,7 +68,7 @@ function Header({ handleSubmit, search, handleSearch }) {
   }
 
   return (
-    <header className="py-6 px-7 bg-white dark:bg-slate-900 md:max-w-6xl m-auto">
+    <header className="py-6 px-7 dark:bg-black md:max-w-6xl m-auto">
       <style>{css}</style>
       <nav className="flex gap-8 justify-between">
         <div className="flex my-auto w-32">

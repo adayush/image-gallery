@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       document.addEventListener("scroll", scrolledBottom);
-    }, 100);
+    }, 200);
   }, [imageData]);
 
   function handleSearch(value) {

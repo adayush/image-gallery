@@ -3,7 +3,7 @@ import { LikeIcon } from './Icons'
 function Card({ profileImage, name, username, likes, url, onClick }) {
     return <div onClick={onClick} className="mb-1 cursor-pointer rounded-md overflow-hidden md:mb-5">
         <img src={`${url}`} className="w-full object-contain" />
-        <div className="flex gap-2 p-2 justify-between border-[1px] dark:bg-slate-700 border-gray-200 dark:border-none rounded-b-md">
+        <div className="flex gap-2 p-2 justify-between border-[1px] dark:bg-black border-gray-200 dark:border-none rounded-b-md">
           <div className="flex gap-1 md:gap-2 align-middle">
             {/* userpicture, name, username */}
             <div className="m-auto overflow-hidden">

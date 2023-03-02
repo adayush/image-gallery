@@ -106,7 +106,7 @@ function LikeIcon() {
         stroke="#4F4F4F"
         strokeWidth="0.51875"
         strokeMiterlimit="10"
-        className="icon fill-none"
+        className="icon fill-none dark:fill-none"
       />
       <path
         d="M1.1889 5.57196V2.60644C1.1889 2.1828 1.37047 2.03149 1.79411 2.03149H2.09672C2.52036 2.03149 2.70192 2.1828 2.70192 2.60644V5.57196C2.70192 5.99561 2.52036 6.14691 2.09672 6.14691H1.79411C1.37047 6.14691 1.1889 5.99561 1.1889 5.57196Z"
@@ -114,7 +114,7 @@ function LikeIcon() {
         strokeWidth="0.51875"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="icon fill-none"
+        className="icon fill-none dark:fill-none"
       />
     </svg>
   );

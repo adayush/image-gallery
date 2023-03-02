@@ -27,7 +27,7 @@ function Gallery({ imageData }) {
 
     const scrollY = document.body.style.top;
     document.body.style.position = "";
-    document.body.style.top = "";
+    document.body.style.top = "0";
     window.scrollTo(0, parseInt(scrollY || "0") * -1);
   }
 
@@ -37,7 +37,7 @@ function Gallery({ imageData }) {
 
   return (
     <main className="mx-auto my-2 md:my-4 p-5 md:max-w-6xl">
-      <ResponsiveMasonry columnsCountBreakPoints={{ 300: 2, 768: 3 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 250: 1, 350: 2, 768: 3 }}>
         <Masonry gutter="0.75rem">
           {data?.map((image, i) => {
             return (
@@ -57,28 +57,6 @@ function Gallery({ imageData }) {
       {popupImageId && <Popup imageId={popupImageId} closePopup={closePopup} />}
     </main>
   );
-
-  // return (
-  //   <main className="mx-auto my-2 md:my-4 columns-2 gap-2 p-5 md:columns-3 md:max-w-6xl md:gap-5">
-  //     {data?.map((image, i) => {
-  //       return (
-  //       <Card
-  //         key={image.id}
-  //         name={image.user.name}
-  //         username={image.user.username}
-  //         profileImage={image.user.profile_image.small}
-  //         likes={image.likes}
-  //         url={image.urls.small}
-  //         onClick={() => showPopup(image.id)}
-  //       />
-  //     )})}
-  //     {popupImageId && <Popup imageId={popupImageId} closePopup={closePopup} />}
-  //   </main>
-  // );
 }
 
 export default Gallery;
-
-// display: grid;
-// grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-// column-gap: 5px;

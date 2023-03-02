@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { Logo, SearchIcon, MenuIcon } from "./Icons";
 import SearchBar from "./SearchBar";
 
 function Header({ handleSubmit, search, handleSearch }) {
+  const [dark, setDark] = useState(false);
   const css = `.switch {
     position: relative;
     display: inline-block;
@@ -57,15 +59,15 @@ function Header({ handleSubmit, search, handleSearch }) {
   
   .slider:before {
     border-radius: 50%;
-  }`
+  }`;
 
-  function toggleDark() {
-    if (document.getElementById('checkBox').checked) {
-      document.documentElement.classList.add('dark')
+  useEffect(() => {
+    if (dark) {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove("dark");
     }
-  }
+  }, [dark])
 
   return (
     <header className="py-6 px-7 dark:bg-black md:max-w-6xl m-auto">
@@ -75,7 +77,12 @@ function Header({ handleSubmit, search, handleSearch }) {
           <Logo class="" />
         </div>
         <div className="hidden gap-3 w-full md:flex [&>p]:m-auto [&>p]:font-semibold dark:[&>p]:text-white">
-          <SearchBar handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} className="md:bg-gray-100 dark:bg-slate-700 dark:text-white" />
+          <SearchBar
+            handleSubmit={handleSubmit}
+            search={search}
+            handleSearch={handleSearch}
+            className="md:bg-gray-100 dark:bg-slate-700 dark:text-white"
+          />
           <p>Explore</p>
           <p>Collections</p>
           <p>Community</p>
@@ -88,11 +95,12 @@ function Header({ handleSubmit, search, handleSearch }) {
             <MenuIcon class="stroke-black dark:stroke-white" />
           </button>
         </div>
-        <div className="hidden md:flex">
-        <label class="switch">
-          <input type="checkbox" onChange={toggleDark} id="checkBox" />
-          <span class="slider"></span>
-        </label>
+        <div className="hidden md:flex md:flex-col">
+          <p className="text-xs pb-1 whitespace-nowrap dark:text-white">{dark ? "Light" : "Dark"} Mode</p>
+          <label class="switch">
+            <input type="checkbox" onChange={() => setDark(!dark)} id="checkBox" />
+            <span class="slider"></span>
+          </label>
         </div>
       </nav>
     </header>

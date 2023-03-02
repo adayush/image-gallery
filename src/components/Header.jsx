@@ -76,26 +76,23 @@ function Header({ handleSubmit, search, handleSearch }) {
         <div className="flex my-auto w-32">
           <Logo class="" />
         </div>
-        <div className="hidden gap-3 w-full md:flex [&>p]:m-auto [&>p]:font-semibold dark:[&>p]:text-white">
+        <div className="hidden gap-3 w-full md:flex [&>p]:m-auto [&>p]:text-gray-500 [&>p]:font-semibold dark:[&>p]:text-white">
           <SearchBar
             handleSubmit={handleSubmit}
             search={search}
             handleSearch={handleSearch}
             className="md:bg-gray-100 dark:bg-slate-700 dark:text-white"
           />
-          <p>Explore</p>
+          {/* <p>Explore</p>
           <p>Collections</p>
-          <p>Community</p>
+          <p>Community</p> */}
         </div>
         <div className="flex gap-5">
-          <button className="m-auto md:hidden">
-            <SearchIcon class="stroke-black dark:stroke-white" />
-          </button>
-          <button className="m-auto md:hidden">
+          {/* <button className="m-auto md:hidden">
             <MenuIcon class="stroke-black dark:stroke-white" />
-          </button>
+          </button> */}
           <div className="flex flex-col justify-center">
-            <p className="text-xs font-medium pb-1 hidden md:block md:whitespace-nowrap dark:text-white">
+            <p className="text-xs font-medium pb-1 md:block md:whitespace-nowrap dark:text-white">
               {dark ? "Light" : "Dark"} Mode
             </p>
             <label class="switch">

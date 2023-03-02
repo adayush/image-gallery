@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import Card from "./Card";
 import Popup from "./Popup";
 
-function Gallery({ imageData, handleSearch }) {
+function Gallery({ imageData, tagSearch }) {
   // const [showPopup, setShowPopup] = useState(false);
   const [popupImageId, setPopupImageId] = useState();
 
@@ -39,7 +39,8 @@ function Gallery({ imageData, handleSearch }) {
     <main className="mx-auto my-2 md:my-4 p-5 md:max-w-6xl">
       <ResponsiveMasonry columnsCountBreakPoints={{ 250: 1, 350: 2, 768: 3 }}>
         <Masonry gutter="0.75rem">
-          {data?.map((image, i) => {
+          {data?.map((image) => {
+            console.log()
             return (
               <Card
                 key={image.id}
@@ -47,14 +48,14 @@ function Gallery({ imageData, handleSearch }) {
                 username={image.user.username}
                 profileImage={image.user.profile_image.small}
                 likes={image.likes}
-                url={image.urls.small}
+                url={window.innerWidth >= 768 ? image.urls.small : image.urls.thumb}
                 onClick={() => showPopup(image.id)}
               />
             );
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {popupImageId && <Popup imageId={popupImageId} closePopup={closePopup} handleSearch={handleSearch} />}
+      {popupImageId && <Popup imageId={popupImageId} closePopup={closePopup} tagSearch={tagSearch} />}
     </main>
   );
 }

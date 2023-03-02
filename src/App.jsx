@@ -24,13 +24,13 @@ function App() {
     }
   }
 
-  function listPhotos(type) {
-    if (type === "search" && search !== currQuery) {
-      setCurrQuery(search);
-      useListPhotos(search, 1, imageData, setImageData);
+  function listPhotos(type, query="") {
+    if (type === "search" && (search !== currQuery || query)) {
+      setCurrQuery(query || search);
+      useListPhotos(query || search, 1, imageData, setImageData);
       setPageNo(1);
     } else if (type === "scroll") {
-      useListPhotos(currQuery, pageNo + 1, imageData, setImageData);
+      useListPhotos(query || currQuery, pageNo + 1, imageData, setImageData);
       setPageNo(pageNo + 1);
       document.removeEventListener('scroll', scrolledBottom);
     } else if (!imageData) {
@@ -60,12 +60,17 @@ function App() {
     listPhotos("search");
   }
 
+  function tagSearch(tag) {
+    setSearch(tag);
+    listPhotos("search", tag);
+  }
+
   return (
     <div className="App">
       <div>
         <Header handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
         <Cover handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
-        <Gallery imageData={imageData} handleSearch={handleSearch} />
+        <Gallery imageData={imageData} tagSearch={tagSearch} />
       </div>
     </div>
   );

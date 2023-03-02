@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useGetPhoto from "../hooks/useGetPhoto";
 import { CrossIcon, LikeIcon } from "./Icons";
 
-function Popup({ imageId, closePopup, handleSearch }) {
+function Popup({ imageId, closePopup, tagSearch }) {
   const [imageData, setImageData] = useState();
 
   useEffect(() => {
@@ -51,23 +51,25 @@ function Popup({ imageId, closePopup, handleSearch }) {
         <div className="flex flex-col gap-4 p-2 bg-white rounded-b-md">
           {/* description box */}
           <div className="flex p-2 justify-between">
-            <div className="flex gap-1 md:gap-2 align-middle">
-              {/* userpicture, name, username */}
-              <div className="m-auto overflow-hidden">
-                <img
-                  src={`${imageData.user.profile_image.small}`}
-                  className="rounded-full"
-                />
+            <a href={`https://unsplash.com/@${imageData.user.username}`} target="_blank">
+              <div className="flex gap-1 md:gap-2 align-middle">
+                {/* userpicture, name, username */}
+                <div className="m-auto overflow-hidden">
+                  <img
+                    src={`${imageData.user.profile_image.small}`}
+                    className="rounded-full"
+                  />
+                </div>
+                <div className="m-auto">
+                  <p className="text-[0.75rem] font-semibold">
+                    {imageData.user.name}
+                  </p>
+                  <p className="text-[0.75rem] text-gray-500 font-medium">
+                    @{imageData.user.username}
+                  </p>
+                </div>
               </div>
-              <div className="m-auto">
-                <p className="text-[0.75rem] font-semibold">
-                  {imageData.user.name}
-                </p>
-                <p className="text-[0.75rem] text-gray-500 font-medium">
-                  @{imageData.user.username}
-                </p>
-              </div>
-            </div>
+            </a>
             <div className="flex gap-1">
               <div className="w-3 md:w-4 m-auto">
                 <LikeIcon />
@@ -80,7 +82,14 @@ function Popup({ imageId, closePopup, handleSearch }) {
             <p className="text-sm font-semibold">Related Tags</p>
             <div className="flex mt-2 gap-2 flex-wrap">
               {imageData.tags.map((tag, i) => (
-                <button onClick={() => handleSearch(tag.title)} key={i} className="px-2 py-1 text-sm rounded-sm bg-gray-200 inline-block">
+                <button
+                  onClick={() => {
+                    tagSearch(tag.title);
+                    closePopup();
+                  }}
+                  key={i}
+                  className="px-2 py-1 text-sm rounded-sm bg-gray-200 inline-block"
+                >
                   {tag.title.charAt(0).toUpperCase()}
                   {tag.title.slice(1)}
                 </button>

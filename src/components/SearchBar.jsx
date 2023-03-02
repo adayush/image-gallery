@@ -2,7 +2,7 @@ import { SearchIcon, CrossIcon } from "./Icons";
 
 function SearchBar({ handleSubmit, search, handleSearch, className }) {
   return (
-    <form onSubmit={handleSubmit} className={`${className} flex m-auto w-full gap-2 p-2 md:max-w-2xl align-middle bg-white rounded-md`}>
+    <form onSubmit={handleSubmit} className={`${className || ""} flex m-auto w-full gap-2 p-2 md:max-w-2xl align-middle bg-white rounded-md`}>
       <button type="submit" className="m-auto">
         <SearchIcon />
       </button>

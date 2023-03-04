@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Cover from "./components/Cover";
 import Gallery from "./components/Gallery";
+import SearchBar from "./components/SearchBar";
 import useListPhotos from "./hooks/useListPhotos";
 
 import "./App.css";
 
 function App() {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
   const [currQuery, setCurrQuery] = useState("");
   const [imageData, setImageData] = useState();
   const [pageNo, setPageNo] = useState(0);
@@ -20,11 +21,11 @@ function App() {
     // When the user is [modifier]px from the bottom, fire the event.
     let modifier = 500;
     if (currentScroll + modifier > documentHeight) {
-      listPhotos("scroll")
+      listPhotos("scroll");
     }
   }
 
-  function listPhotos(type, query="") {
+  function listPhotos(type, query = "") {
     if (type === "search" && (search !== currQuery || query)) {
       setCurrQuery(query || search);
       useListPhotos(query || search, 1, imageData, setImageData);
@@ -32,10 +33,10 @@ function App() {
     } else if (type === "scroll") {
       useListPhotos(query || currQuery, pageNo + 1, imageData, setImageData);
       setPageNo(pageNo + 1);
-      document.removeEventListener('scroll', scrolledBottom);
+      document.removeEventListener("scroll", scrolledBottom);
     } else if (!imageData) {
       useListPhotos(null, 1, imageData, setImageData);
-      setPageNo(pageNo+1);
+      setPageNo(pageNo + 1);
     }
   }
 
@@ -67,11 +68,22 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <Header handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
-        <Cover handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
-        <Gallery imageData={imageData} tagSearch={tagSearch} />
-      </div>
+      <Header>
+        <SearchBar
+          search={search}
+          handleSearch={handleSearch}
+          handleSubmit={handleSubmit}
+          className="md:bg-gray-100 dark:bg-slate-700 dark:text-white"
+        />
+      </Header>
+      <Cover>
+        <SearchBar
+          search={search}
+          handleSearch={handleSearch}
+          handleSubmit={handleSubmit}
+        />
+      </Cover>
+      <Gallery imageData={imageData} tagSearch={tagSearch} />
     </div>
   );
 }

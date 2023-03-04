@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Logo, SearchIcon, MenuIcon } from "./Icons";
-import SearchBar from "./SearchBar";
+import { Logo } from "./Icons";
 
-function Header({ handleSubmit, search, handleSearch }) {
+function Header({ children }) {
   const [dark, setDark] = useState(false);
   const css = `.switch {
     position: relative;
@@ -70,42 +69,31 @@ function Header({ handleSubmit, search, handleSearch }) {
   }, [dark]);
 
   return (
-    <header className="py-6 px-7 dark:bg-black md:max-w-6xl m-auto">
-      <style>{css}</style>
-      <nav className="flex gap-8 justify-between">
-        <div className="flex my-auto w-32">
-          <Logo class="" />
-        </div>
-        <div className="hidden gap-3 w-full md:flex [&>p]:m-auto [&>p]:text-gray-500 [&>p]:font-semibold dark:[&>p]:text-white">
-          <SearchBar
-            handleSubmit={handleSubmit}
-            search={search}
-            handleSearch={handleSearch}
-            className="md:bg-gray-100 dark:bg-slate-700 dark:text-white"
-          />
-          {/* <p>Explore</p>
-          <p>Collections</p>
-          <p>Community</p> */}
-        </div>
-        <div className="flex gap-5">
-          {/* <button className="m-auto md:hidden">
-            <MenuIcon class="stroke-black dark:stroke-white" />
-          </button> */}
+    <header className="dark:bg-black">
+      <div className="py-6 px-7 dark:bg-black md:max-w-6xl m-auto">
+        <style>{css}</style>
+        <nav className="flex gap-8 justify-between">
+          <div className="flex my-auto w-32 md:w-36">
+            <Logo />
+          </div>
+          <div className="hidden gap-3 w-full md:flex [&>p]:m-auto [&>p]:text-gray-500 [&>p]:font-semibold dark:[&>p]:text-white">
+            {children}
+          </div>
           <div className="flex flex-col justify-center">
             <p className="text-xs font-medium pb-1 md:block md:whitespace-nowrap dark:text-white">
               {dark ? "Light" : "Dark"} Mode
             </p>
-            <label class="switch">
+            <label className="switch">
               <input
                 type="checkbox"
                 onChange={() => setDark(!dark)}
                 id="checkBox"
               />
-              <span class="slider"></span>
+              <span className="slider"></span>
             </label>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }

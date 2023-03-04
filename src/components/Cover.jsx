@@ -1,6 +1,4 @@
-import SearchBar from "./SearchBar";
-
-function Cover({ handleSubmit, search, handleSearch }) {
+function Cover({ children }) {
   return (
     <div
       className={`bg-slate-500 bg-[url('https://images.unsplash.com/photo-1675329363211-9bbf30434b13?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80')] bg-cover bg-center`}
@@ -12,7 +10,7 @@ function Cover({ handleSubmit, search, handleSearch }) {
         <p className="text-sm text-white font-medium">
           Over 2.4 million+ stock Images by our talented community
         </p>
-        <SearchBar handleSubmit={handleSubmit} search={search} handleSearch={handleSearch} />
+        {children}
       </div>
     </div>
   );
